@@ -7,4 +7,3 @@ sudo apt install -y nodejs npm
 # Install angular cli
 sudo npm install -g @angular/cli
 
-
