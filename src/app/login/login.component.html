@@ -1,0 +1,36 @@
+<div class="full d-flex justify-content-center align-items-center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Iniciar Sesion</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
+      <mat-card-content class="d-flex flex-column">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Usuario"
+            type="text"
+            formControlName="email"
+          />
+
+          <mat-error> Este campo es requerido </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Contraseña"
+            type="password"
+            formControlName="password"
+          />
+
+          <mat-error> Este campo es requerido </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions class="d-flex justify-content-between">
+        <button mat-stroked-button color="primary">Cancelar</button>
+        <button mat-raised-button color="primary">Iniciar Sesion</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

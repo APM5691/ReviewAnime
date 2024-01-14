@@ -1,0 +1,17 @@
+<app-review *ngIf="review" (review)="openDialog()"></app-review>
+
+<div>
+  <app-header (OpenDialog)="openDialog()"></app-header>
+
+  <div class="col-md-12 d-flex change">
+    <div class="adapt m-2">
+      <h2>Animes Recientes</h2>
+      <app-recent-animes></app-recent-animes>
+    </div>
+    <div class="adapt m-2">
+      <h2>Animes Populares</h2>
+      <app-top-animes></app-top-animes>
+    </div>
+  </div>
+  <!-- Recientes Calendario de Animes Cuando Salen -->
+</div>

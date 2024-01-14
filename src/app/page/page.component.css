@@ -1,0 +1,15 @@
+/* si es menor de 768px se activa el flex column*/
+
+.adapt {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .change {
+    flex-direction: column;
+  }
+
+  .adapt {
+    width: 96%;
+  }
+}

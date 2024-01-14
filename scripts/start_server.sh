@@ -1,10 +1,10 @@
 #!/bin/bash
 cd /var/www/html/files
-npm install
-ng build
-cp -r dist/markdown/* /var/www/html/build
-# rm -rf /var/www/html/files/*
-# rm -rf /var/www/html/files/.*
+sudo npm install
+sudo ng build
+sudo cp -r dist/markdown/* /var/www/html/build
+sudo rm -rf /var/www/html/files/*
+sudo rm -rf /var/www/html/files/.*
 
 # restart nginx
-service nginx restart
+sudo service nginx restart
