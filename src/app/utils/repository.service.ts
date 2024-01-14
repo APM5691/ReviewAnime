@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class Repository<T = any> {
-  public route: string = 'http://localhost:3000/';
+  public route: string = 'http://3.131.242.240/';
   protected path: string = '';
   constructor(public http: HttpClient) {}
 
