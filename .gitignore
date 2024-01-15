@@ -43,3 +43,6 @@ Thumbs.db
 
 # Env files
 .env
+
+# Compiled JS
+package-lock.json

@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /var/www/html/files
-sudo npm install
-sudo npm run build
+sudo yarn install
+sudo yarn run build
 sudo cp -r dist/markdown/* /var/www/html/build
 sudo rm -rf /var/www/html/files/*
 sudo rm -rf /var/www/html/files/.*
