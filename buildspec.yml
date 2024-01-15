@@ -1,25 +1,22 @@
 version: 0.2
 env:
   variables:
-    CACHE_CONTROL: "86400"
-    S3_BUCKET: deplotparareviewanime.s3-website.us-east-1.amazonaws.com
-    BUILD_FOLDER: dist
+    APP_NAME: "angular-cicd-pipeline-demo"
+    S3_BUCKET_NAME: "deplotparareviewanime"
 phases:
   install:
+    runtime-versions:
+      nodejs: 20.x
     commands:
-      - echo Installing source NPM dependencies...
-      - npm install
-      - npm install -g @angular/cli
+      - echo install process started
+      - npm install && npm install -g @angular/cli
   build:
     commands:
-      - echo Build started on `date`
-      - npm build
+      - echo build process started now
+      - ng build --configuration=production
   post_build:
     commands:
-      - aws s3 cp ${BUILD_FOLDER} s3://${S3_BUCKET} --recursive --acl public-read --cache-control "max-age=${CACHE_CONTROL}"
-      - echo Build completed on `date`
-artifacts:
-  files:
-    - "**/*"
-  base-directory: "dist*"
-  discard-paths: yes
+      - echo build process finished, we should uplload to S3 now
+      - cd dist/$APP_NAME
+      - ls -la
+      - aws s3 sync . s3://$S3_BUCKET_NAME --delete
