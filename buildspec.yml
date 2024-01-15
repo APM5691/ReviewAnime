@@ -1,8 +1,8 @@
 version: 0.2
 env:
   variables:
-    APP_NAME: "angular-cicd-pipeline-demo"
-    S3_BUCKET_NAME: "deplotparareviewanime"
+    APP_NAME: "markdown"
+    S3_BUCKET_NAME: "arn:aws:s3:us-east-1:176315296894:deplotparareviewanime"
 phases:
   install:
     runtime-versions:
@@ -13,10 +13,10 @@ phases:
   build:
     commands:
       - echo build process started now
-      - npm build
+      - npm run build
   post_build:
     commands:
       - echo build process finished, we should upload to S3 now
-      - pwd
+      - cd dist/$
       - ls -la
       - aws s3 sync . s3://$S3_BUCKET_NAME --delete
