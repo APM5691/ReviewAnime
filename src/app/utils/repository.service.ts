@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class Repository<T = any> {
-  public route: string = 'http://3.131.242.240/';
+  public route: string = 'http://localhost:3000/';
   protected path: string = '';
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+    this.route = isDevMode()
+      ? 'http://localhost:3000/'
+      : 'http://54.225.188.162/';
+  }
 
   public fullRoute() {
     return `${this.route}${this.path}`;
