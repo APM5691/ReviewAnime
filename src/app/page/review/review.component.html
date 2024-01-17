@@ -1,13 +1,11 @@
-<div class="back">
-  <div class="text-white"><mat-icon> keyboard_arrow_left </mat-icon></div>
-
+<mat-dialog-content class="mat-typography">
   <div *ngIf="!loading">
     <mat-spinner></mat-spinner>
   </div>
 
-  <mat-card class="meChange" *ngIf="loading">
+  <div class="meChange" *ngIf="loading">
     <div class="d-flex flex-column">
-      <img mat-card-xl-image [src]="anime.image" />
+      <img [src]="anime.image" height="200px" />
       <div *ngIf="anime.alternativeNames">
         <ng-container *ngFor="let altName of anime.alternativeNames">
           <h5 class="text-white m-1">{{ altName.name }}</h5>
@@ -16,7 +14,7 @@
     </div>
 
     <div class="p-2 text-white d-flex flex-column justify-content-around">
-      <button class="floatCorner" (click)="closeReview()">X</button>
+      <button class="floatCorner" mat-dialog-close>X</button>
 
       <h1 style="width: 90%">{{ anime.name }}</h1>
 
@@ -57,9 +55,5 @@
         </button>
       </form>
     </div>
-  </mat-card>
-
-  <div class="text-white">
-    <mat-icon> keyboard_arrow_right </mat-icon>
   </div>
-</div>
+</mat-dialog-content>

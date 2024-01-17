@@ -8,6 +8,7 @@ import { TopAnimesComponent } from './top-animes/top-animes.component';
 import { RecentAnimesComponent } from './recent-animes/recent-animes.component';
 import { CardComponent } from './card/card.component';
 import { ReviewComponent } from './review/review.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ReviewComponent } from './review/review.component';
     RecentAnimesComponent,
     CardComponent,
     ReviewComponent,
+    SearchComponent,
   ],
   imports: [CommonModule, PageRoutingModule, AngularMaterialModule],
   providers: [],

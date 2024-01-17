@@ -25,4 +25,8 @@ export class AnimeService extends Repository<Anime> {
   getNumberOfAnimes() {
     return this.http.get(`${this.fullRoute()}/numberOfAnimes`);
   }
+
+  getSearch(search: Object) {
+    return this.http.post(`${this.fullRoute()}/search`, { search });
+  }
 }

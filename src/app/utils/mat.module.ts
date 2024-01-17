@@ -35,6 +35,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StartsComponent } from './shared/starts.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const materialModules = [
   CdkTreeModule,
@@ -72,6 +73,7 @@ const materialModules = [
   ReactiveFormsModule,
   MatProgressSpinnerModule,
   MatProgressBarModule,
+  MatDialogModule,
 ];
 @NgModule({
   declarations: [StartsComponent],

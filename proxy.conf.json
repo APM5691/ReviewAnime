@@ -1,6 +1,9 @@
 {
     "*": {
-        "target": "http://54.225.188.162/",
+        "target": [
+            "http://54.225.188.162/",
+            "localhost:3000"
+        ],
         "secure": false,
         "logLevel": "debug"
     }

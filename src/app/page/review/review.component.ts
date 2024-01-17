@@ -43,10 +43,6 @@ export class ReviewComponent implements OnInit {
     this.getAnime();
   }
 
-  closeReview() {
-    this.review.emit();
-  }
-
   setQualification(val: any) {
     this.qualification = val;
   }
@@ -54,7 +50,6 @@ export class ReviewComponent implements OnInit {
   getAnime() {
     this.animeService.getAnimeWithOutReview().subscribe((response: any) => {
       if (!response) {
-        this.closeReview();
         alert('No hay más animes para calificar');
       }
 
@@ -83,7 +78,6 @@ export class ReviewComponent implements OnInit {
 
     this.qualificationService.post(review).subscribe((response: any) => {
       if (response) {
-        alert('Calificación enviada');
         this.reviewForm.reset();
         this.loading = false;
         this.getAnime();

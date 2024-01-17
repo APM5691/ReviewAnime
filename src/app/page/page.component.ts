@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ReviewComponent } from './review/review.component';
 
 @Component({
   selector: 'app-page',
@@ -7,13 +9,22 @@ import { HeaderComponent } from './header/header.component';
   styleUrls: ['./page.component.css'],
 })
 export class PageComponent implements OnInit {
+  @ViewChild(HeaderComponent) header: HeaderComponent | undefined;
   review: boolean = false;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
 
   openDialog() {
-    this.review = !this.review;
+    const dialogRef = this.dialog.open(ReviewComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (this.header) {
+        this.header.getAnimesWatched();
+        this.header.getNumberOfAnimes();
+        this.header.getNumberOfAnimes();
+      }
+    });
   }
 }
