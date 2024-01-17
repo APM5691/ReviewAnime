@@ -14,3 +14,13 @@ body {
 .full {
   height: 100%;
 }
+
+.changeInResponsive {
+  flex-direction: row !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .changeInResponsive {
+    flex-direction: column !important;
+  }
+}

@@ -23,7 +23,7 @@ export class UserInterceptor implements HttpInterceptor {
 
     if (token !== 'Error') {
       interceptRequest = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${token}`),
+        headers: request.headers.set('Authorization', `Bearer ${token}`), // Set token
       });
     }
     return next.handle(interceptRequest);
