@@ -8,7 +8,7 @@ export class Repository<T = any> {
   constructor(public http: HttpClient) {
     this.route = isDevMode()
       ? 'http://localhost:3000/'
-      : 'http://54.225.188.162/';
+      : 'http://52.91.50.132/';
   }
 
   public fullRoute() {
