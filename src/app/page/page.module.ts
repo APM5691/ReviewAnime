@@ -9,6 +9,8 @@ import { RecentAnimesComponent } from './recent-animes/recent-animes.component';
 import { CardComponent } from './card/card.component';
 import { ReviewComponent } from './review/review.component';
 import { SearchComponent } from './search/search.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { SearchComponent } from './search/search.component';
     CardComponent,
     ReviewComponent,
     SearchComponent,
+    VideoPlayerComponent,
+    EditComponent,
   ],
   imports: [CommonModule, PageRoutingModule, AngularMaterialModule],
   providers: [],

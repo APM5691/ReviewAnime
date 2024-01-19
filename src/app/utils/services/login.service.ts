@@ -35,18 +35,23 @@ export class LoginService extends Repository<Login> {
     localStorage.setItem('token', token);
   }
 
-  getToken(): string {
-    return localStorage.getItem('token') ?? 'Error';
+  getToken() {
+    return localStorage.getItem('token') ?? false;
   }
 
   removeToken() {
     localStorage.removeItem('token');
   }
 
+  isTokenValid(): boolean {
+    const token = this.getToken();
+    return token !== false && token !== null;
+  }
+
   public isLogin() {
     const token = this.getToken();
 
-    if (token === 'Error') {
+    if (token === false) {
       return false;
     }
 

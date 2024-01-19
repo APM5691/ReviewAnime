@@ -4,9 +4,9 @@ import { LoginService } from '../services/login.service';
 import { catchError, map } from 'rxjs';
 
 export const loginGuard: CanActivateFn = (route, state) => {
-  const token = localStorage.getItem('token') ?? 'Error';
+  const token = localStorage.getItem('token') ?? false;
 
-  if (token === 'Error') {
+  if (token === false) {
     return false;
   }
 

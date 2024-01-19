@@ -21,7 +21,7 @@ export class UserInterceptor implements HttpInterceptor {
 
     const token = this.loginService.getToken();
 
-    if (token !== 'Error') {
+    if (token !== false) {
       interceptRequest = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`), // Set token
       });
