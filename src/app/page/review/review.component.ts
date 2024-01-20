@@ -71,7 +71,7 @@ export class ReviewComponent implements OnInit {
       animeId: this.anime.id,
       userId: this.user.id,
       reviewed: this.reviewForm.value.review ?? false,
-      calification: this.reviewForm.value.calification ?? 0,
+      qualification: this.reviewForm.value.calification ?? 0,
     };
 
     console.log(review);

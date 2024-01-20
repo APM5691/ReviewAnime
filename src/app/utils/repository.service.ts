@@ -19,12 +19,16 @@ export class Repository<T = any> {
     return this.http.get<T>(this.fullRoute(), { params });
   }
 
+  public getById(id: number) {
+    return this.http.get<T>(`${this.fullRoute()}/${id}`);
+  }
+
   public post(formData: Object) {
     return this.http.post<T>(this.fullRoute(), formData);
   }
 
   public update(id: number, formData: Object) {
-    return this.http.put<T>(`${this.fullRoute()}/${id}`, formData);
+    return this.http.patch<T>(`${this.fullRoute()}/${id}`, formData);
   }
 
   public remove(id: number) {

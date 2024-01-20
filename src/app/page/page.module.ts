@@ -10,7 +10,7 @@ import { CardComponent } from './card/card.component';
 import { ReviewComponent } from './review/review.component';
 import { SearchComponent } from './search/search.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
-import { EditComponent } from './edit/edit.component';
+import { UpdateReviewComponent } from './update-review/update-review.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,9 @@ import { EditComponent } from './edit/edit.component';
     RecentAnimesComponent,
     CardComponent,
     ReviewComponent,
+    UpdateReviewComponent,
     SearchComponent,
     VideoPlayerComponent,
-    EditComponent,
   ],
   imports: [CommonModule, PageRoutingModule, AngularMaterialModule],
   providers: [],

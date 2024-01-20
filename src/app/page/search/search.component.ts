@@ -7,6 +7,7 @@ import { AnimeService } from 'src/app/utils/services/anime.service';
 import { VideoService } from 'src/app/utils/services/video.service';
 import { activateNotifications } from 'src/app/utils/shared/notifications.function';
 import { VideoPlayerComponent } from '../video-player/video-player.component';
+import { UpdateReviewComponent } from '../update-review/update-review.component';
 
 @Component({
   selector: 'app-search',
@@ -14,17 +15,18 @@ import { VideoPlayerComponent } from '../video-player/video-player.component';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+  displayedColumns: string[] = ['image', 'name', 'finished', 'url', 'Acciones'];
   searchForm = new FormGroup({
     search: new FormControl('', Validators.required),
   });
-  displayedColumns: string[] = ['image', 'name', 'finished', 'url', 'Acciones'];
+  loading: boolean = false;
   animes: any;
 
   constructor(
     public animeService: AnimeService,
     public videoService: VideoService,
-    public _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -40,8 +42,6 @@ export class SearchComponent implements OnInit {
     };
 
     this.animeService.getSearch(value).subscribe((res: any) => {
-      console.log(res);
-
       if (res.length == 0) {
         activateNotifications(
           'No se encontraron animes',
@@ -60,6 +60,8 @@ export class SearchComponent implements OnInit {
         'top',
         this._snackBar
       );
+
+      this.loading = true;
     });
   }
 
@@ -69,5 +71,9 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  edit(id: number) {}
+  edit(id: number) {
+    this.dialog.open(UpdateReviewComponent, {
+      data: id,
+    });
+  }
 }
