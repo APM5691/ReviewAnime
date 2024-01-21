@@ -11,13 +11,6 @@ export class QualificationService extends Repository<Qualification> {
     this.path = 'qualifications';
   }
 
-  getQualificationAndAnimeByUser(data: object) {
-    return this.http.post(
-      `${this.fullRoute()}/getQualificationAndAnimeByUser`,
-      data
-    );
-  }
-
   getPercentage() {
     return this.http.get(`${this.fullRoute()}/percentageComplete`);
   }

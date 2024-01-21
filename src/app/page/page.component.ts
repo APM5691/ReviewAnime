@@ -17,7 +17,9 @@ export class PageComponent implements OnInit {
   ngOnInit() {}
 
   openDialog() {
-    const dialogRef = this.dialog.open(ReviewComponent);
+    const dialogRef = this.dialog.open(ReviewComponent, {
+      width: '75%',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (this.header) {

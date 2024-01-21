@@ -36,9 +36,10 @@ export class UpdateReviewComponent implements OnInit {
   user: any;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: number,
-    private loginService: LoginService,
     private qualificationService: QualificationService,
+    @Inject(MAT_DIALOG_DATA) public data: number,
+    private animeService: AnimeService,
+    private loginService: LoginService,
     private _snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {}
@@ -58,19 +59,37 @@ export class UpdateReviewComponent implements OnInit {
       animeId: this.idQualification,
     };
 
-    this.qualificationService
+    this.animeService
       .getQualificationAndAnimeByUser(val)
       .subscribe((response: any) => {
         console.log(response);
         if (!response) {
-          alert('Error al obtener el anime');
+          activateNotifications(
+            'No se encontró la calificación',
+            'right',
+            'top',
+            this._snackBar
+          );
+          this.dialog.closeAll();
         }
-        this.anime = response.anime;
-        this.reviewForm.patchValue({
-          review: response.reviewed,
-          calification: response.qualification,
-        });
-        this.setQualification(response.qualification);
+
+        this.anime = response;
+
+        if (response.qualification) {
+          const qualification = response.qualification[0];
+
+          this.reviewForm.patchValue({
+            review: qualification.reviewed,
+            calification: qualification.qualification,
+          });
+          this.setQualification(qualification.qualification);
+        } else {
+          this.reviewForm.patchValue({
+            review: false,
+            calification: 0,
+          });
+          this.setQualification(0);
+        }
         this.loading = true;
       });
   }

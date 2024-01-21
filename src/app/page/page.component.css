@@ -2,6 +2,10 @@
   width: 96%;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 @media (max-width: 768px) {
   .change {
     flex-direction: column;

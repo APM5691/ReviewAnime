@@ -34,8 +34,6 @@ export class HeaderComponent implements OnInit {
     this.showSecondText = false;
 
     this.getNumberOfAnimes();
-    this.getPercentage();
-    this.getAnimesWatched();
   }
 
   showHiddenText() {
@@ -51,25 +49,33 @@ export class HeaderComponent implements OnInit {
   getNumberOfAnimes() {
     this.animeService.getNumberOfAnimes().subscribe((response: any) => {
       this.numberOfAnimes = response;
+      this.getPercentage();
+      this.getAnimesWatched();
     });
   }
 
   getPercentage() {
     this.qualificationService.getPercentage().subscribe((response: any) => {
       this.animesReviewed = response;
-      let percentage = response / this.numberOfAnimes;
-      let temp = percentage * 100;
-      this.percentage = Math.ceil(temp);
+      let percentage = this.calculatePercentage(response);
+      this.percentage = percentage;
     });
   }
 
   getAnimesWatched() {
     this.qualificationService.getAnimesWatched().subscribe((response: any) => {
       this.animesWatched = response;
-      let percentage = response / this.numberOfAnimes;
-      let temp = percentage * 100;
-      this.percentajeWatched = Math.ceil(temp);
+      let percentage = this.calculatePercentage(response);
+      this.percentajeWatched = percentage;
     });
+  }
+
+  calculatePercentage(number: number) {
+    let percentage = number / this.numberOfAnimes;
+    let temp = percentage * 100;
+    let result = Math.ceil(temp);
+
+    return result;
   }
 
   openDialog() {
