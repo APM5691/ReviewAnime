@@ -17,8 +17,12 @@ export class LoginService extends Repository<Login> {
   login(body: Object) {
     return this.http.post(this.fullRoute(), body).pipe(
       tap((response: any) => {
+        console.log(response);
+
         const token = response['token'];
         this.setToken(token);
+
+        console.log(this.getUser());
       })
     );
   }
@@ -56,5 +60,28 @@ export class LoginService extends Repository<Login> {
     }
 
     return true;
+  }
+
+  public tokenIsExpired() {
+    // const token = this.getToken();
+
+    // if (!token) {
+    //   return false;
+    // }
+
+    // const payload = token?.split('.')[1];
+    // const payloadDecoded = atob(payload ?? 'Error');
+    // const user = JSON.parse(payloadDecoded);
+
+    // const expirationDate = user.expirationDate;
+    // const currentDate = new Date().valueOf();
+
+    // console.log(expirationDate, currentDate);
+
+    // console.log(currentDate <= expirationDate);
+
+    // // Compara la fecha de expiración con la fecha actual
+    // return currentDate <= expirationDate;
+    return false;
   }
 }

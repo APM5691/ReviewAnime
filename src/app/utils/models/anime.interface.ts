@@ -6,6 +6,8 @@ export interface Anime {
   image: string;
   alternativeNames: any;
   genres: any;
+  studies: any;
+  numberEpisodes: number;
   createdAt: Date;
   updatedAt: Date;
 }

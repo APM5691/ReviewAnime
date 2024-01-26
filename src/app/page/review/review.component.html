@@ -1,11 +1,11 @@
 <mat-dialog-content class="mat-typography">
-  <div *ngIf="!loading">
+  <div *ngIf="!loading" class="d-flex justify-content-center">
     <mat-spinner></mat-spinner>
   </div>
 
   <div class="meChange" *ngIf="loading">
-    <div class="d-flex flex-column">
-      <img [src]="anime.image" width="200px" />
+    <div class="d-flex flex-column w-25">
+      <img [src]="anime.image" width="100%" />
       <div *ngIf="anime.alternativeNames">
         <ul role="list" *ngFor="let altName of anime.alternativeNames">
           <li role="listitem">{{ altName.name }}</li>
@@ -13,10 +13,28 @@
       </div>
     </div>
 
-    <div class="p-2 text-white d-flex flex-column justify-content-around">
+    <div class="p-2 text-white d-flex flex-column w-75">
       <button class="floatCorner" mat-dialog-close>X</button>
 
       <h1 style="width: 90%">{{ anime.name }}</h1>
+
+      <div class="d-flex">
+        <h4 *ngFor="let study of anime.studies">
+          {{ study.name }}
+        </h4>
+
+        <button mat-icon-button (click)="openLink(anime.url)">
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          (click)="watchAnime(anime.id)"
+          *ngIf="anime.numberEpisodes != 0"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </div>
 
       <div *ngIf="anime.genres">
         <mat-chip-set>
@@ -28,12 +46,8 @@
 
       <div class="pb-4">{{ anime.description }}</div>
 
-      <form
-        class="d-flex justify-content-around"
-        [formGroup]="reviewForm"
-        (ngSubmit)="sendReview()"
-      >
-        <mat-form-field class="w-25">
+      <form class="d-flex" [formGroup]="reviewForm" (ngSubmit)="sendReview()">
+        <mat-form-field>
           <input
             matInput
             type="number"
@@ -48,7 +62,18 @@
 
         <app-starts [qualification]="qualification"></app-starts>
 
-        <mat-checkbox formControlName="review">Visto</mat-checkbox>
+        <!-- <mat-checkbox formControlName="review">Visto</mat-checkbox> -->
+
+        <mat-form-field>
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="type" value="0">
+            <mat-option value="0">No Visto</mat-option>
+            <mat-option value="1">Visto</mat-option>
+            <mat-option value="2">Viendo</mat-option>
+            <mat-option value="3">Abandonado</mat-option>
+            <mat-option value="4">Pendiente</mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <button mat-icon-button>
           <mat-icon>send</mat-icon>

@@ -10,7 +10,6 @@ import { CardComponent } from './card/card.component';
 import { ReviewComponent } from './review/review.component';
 import { SearchComponent } from './search/search.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
-import { UpdateReviewComponent } from './update-review/update-review.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +19,9 @@ import { UpdateReviewComponent } from './update-review/update-review.component';
     RecentAnimesComponent,
     CardComponent,
     ReviewComponent,
-    UpdateReviewComponent,
     SearchComponent,
     VideoPlayerComponent,
   ],
   imports: [CommonModule, PageRoutingModule, AngularMaterialModule],
-  providers: [],
 })
 export class PageModule {}

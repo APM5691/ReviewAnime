@@ -8,10 +8,14 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserInterceptor implements HttpInterceptor {
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router // Import Router
+  ) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -21,7 +25,16 @@ export class UserInterceptor implements HttpInterceptor {
 
     const token = this.loginService.getToken();
 
-    if (token !== false) {
+    // Verificar si el token ha expirado
+    const isTokenExpired = this.loginService.tokenIsExpired();
+
+    if (isTokenExpired) {
+      this.loginService.removeToken();
+      this.router.navigate(['/login']);
+      return next.handle(request);
+    }
+
+    if (token) {
       interceptRequest = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`), // Set token
       });

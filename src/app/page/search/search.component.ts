@@ -7,7 +7,7 @@ import { AnimeService } from 'src/app/utils/services/anime.service';
 import { VideoService } from 'src/app/utils/services/video.service';
 import { activateNotifications } from 'src/app/utils/shared/notifications.function';
 import { VideoPlayerComponent } from '../video-player/video-player.component';
-import { UpdateReviewComponent } from '../update-review/update-review.component';
+import { ReviewComponent } from '../review/review.component';
 
 @Component({
   selector: 'app-search',
@@ -72,7 +72,7 @@ export class SearchComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.dialog.open(UpdateReviewComponent, {
+    this.dialog.open(ReviewComponent, {
       data: id,
     });
   }

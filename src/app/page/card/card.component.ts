@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Anime } from 'src/app/utils/models/anime.interface';
-import { UpdateReviewComponent } from '../update-review/update-review.component';
+import { ReviewComponent } from '../review/review.component';
 
 @Component({
   selector: 'app-card',
@@ -14,7 +13,7 @@ export class CardComponent {
   @Input() anime: any;
 
   goToAnime(id: number) {
-    this.dialog.open(UpdateReviewComponent, {
+    this.dialog.open(ReviewComponent, {
       data: id,
     });
   }
