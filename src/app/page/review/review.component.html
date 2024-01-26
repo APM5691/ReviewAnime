@@ -46,7 +46,11 @@
 
       <div class="pb-4">{{ anime.description }}</div>
 
-      <form class="d-flex" [formGroup]="reviewForm" (ngSubmit)="sendReview()">
+      <form
+        class="d-flex justify-content-between"
+        [formGroup]="reviewForm"
+        (ngSubmit)="sendReview()"
+      >
         <mat-form-field>
           <input
             matInput
@@ -62,11 +66,9 @@
 
         <app-starts [qualification]="qualification"></app-starts>
 
-        <!-- <mat-checkbox formControlName="review">Visto</mat-checkbox> -->
-
         <mat-form-field>
           <mat-label>Tipo</mat-label>
-          <mat-select formControlName="type" value="0">
+          <mat-select formControlName="type" [value]="forChange">
             <mat-option value="0">No Visto</mat-option>
             <mat-option value="1">Visto</mat-option>
             <mat-option value="2">Viendo</mat-option>

@@ -22,6 +22,7 @@ export class ReviewComponent implements OnInit {
   });
   idQualification: number = 0;
   qualification: number = 0;
+  forChange: string = '0';
   loading: boolean = false;
   anime: Anime = {
     id: 0,
@@ -127,7 +128,7 @@ export class ReviewComponent implements OnInit {
     const review = {
       animeId: this.anime.id,
       userId: this.user.id,
-      type: this.reviewForm.value.type ?? 'No Visto',
+      type: this.reviewForm.value.type ?? '0',
       qualification: this.reviewForm.value.calification ?? 0,
     };
 
@@ -157,6 +158,11 @@ export class ReviewComponent implements OnInit {
             this._snackBar
           );
           this.reviewForm.reset();
+          this.reviewForm.patchValue({
+            type: '0',
+            calification: 0,
+          });
+          this.setQualification(0);
           this.loading = false;
           this.getAnime();
         }
