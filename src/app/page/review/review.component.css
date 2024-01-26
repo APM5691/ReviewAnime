@@ -30,8 +30,24 @@
   flex-direction: row;
 }
 
+.w-25-r {
+  width: 25%;
+}
+
+.w-75-r {
+  width: 75%;
+}
+
 @media (max-width: 768px) {
   .meChange {
     flex-direction: column;
+  }
+
+  .w-25-r {
+    width: 100%;
+  }
+
+  .w-75-r {
+    width: 100%;
   }
 }
