@@ -25,7 +25,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:3000'],
+        allowedDomains: ['localhost:3000', 'http://52.91.50.132/'],
       },
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {

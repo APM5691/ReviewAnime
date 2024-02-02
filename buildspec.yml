@@ -5,11 +5,12 @@ phases:
       nodejs: 20.x
     commands:
       - echo install process started
-      - npm install && npm install -g @angular/cli
+      - corepack enable
+      - yarn install
   build:
     commands:
       - echo build process started now
-      - npm run build
+      - yarn run build
 artifacts:
   files:
     - "**/*"
