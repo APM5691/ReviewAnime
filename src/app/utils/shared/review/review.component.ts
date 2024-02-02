@@ -7,7 +7,7 @@ import { AnimeService } from 'src/app/utils/services/anime.service';
 import { LoginService } from 'src/app/utils/services/login.service';
 import { QualificationService } from 'src/app/utils/services/qualification.service';
 import { activateNotifications } from 'src/app/utils/shared/notifications.function';
-import { VideoPlayerComponent } from '../video-player/video-player.component';
+import { VideoPlayerComponent } from '../../../page/home/video-player/video-player.component';
 
 @Component({
   selector: 'app-review',
@@ -135,6 +135,8 @@ export class ReviewComponent implements OnInit {
     console.log(review);
 
     if (this.data) {
+      console.log('update');
+
       this.qualificationService
         .update(this.idQualification, review)
         .subscribe((response: any) => {
@@ -149,6 +151,8 @@ export class ReviewComponent implements OnInit {
           }
         });
     } else {
+      console.log('create');
+
       this.qualificationService.post(review).subscribe((response: any) => {
         if (response) {
           activateNotifications(

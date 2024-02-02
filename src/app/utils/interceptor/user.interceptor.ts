@@ -9,44 +9,20 @@ import {
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class UserInterceptor implements HttpInterceptor {
   constructor(
     private loginService: LoginService,
-    private router: Router // Import Router
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    let interceptRequest = request;
-
-    const token = this.loginService.getToken();
-
-    // Verificar si el token ha expirado
-    const isTokenExpired = this.loginService.tokenIsExpired();
-
-    if (isTokenExpired) {
-      this.loginService.removeToken();
-      this.router.navigate(['/login']);
-      return next.handle(request);
-    }
-
-    if (token) {
-      interceptRequest = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${token}`), // Set token
-      });
-    }
-    return next.handle(interceptRequest);
+    return next.handle(request);
   }
 }
-
-export const interceptorProvider = [
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: UserInterceptor,
-    multi: true,
-  },
-];

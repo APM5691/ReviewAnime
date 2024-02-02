@@ -7,7 +7,7 @@ import { AnimeService } from 'src/app/utils/services/anime.service';
 import { VideoService } from 'src/app/utils/services/video.service';
 import { activateNotifications } from 'src/app/utils/shared/notifications.function';
 import { VideoPlayerComponent } from '../video-player/video-player.component';
-import { ReviewComponent } from '../review/review.component';
+import { ReviewComponent } from '../../../utils/shared/review/review.component';
 
 @Component({
   selector: 'app-search',
@@ -36,6 +36,8 @@ export class SearchComponent implements OnInit {
       alert('Please fill out the form before submitting!');
       return;
     }
+
+    console.log(this.searchForm.value.search);
 
     let value = {
       search: this.searchForm.value.search,

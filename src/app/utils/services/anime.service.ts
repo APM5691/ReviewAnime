@@ -36,4 +36,12 @@ export class AnimeService extends Repository<Anime> {
       data
     );
   }
+
+  getAnimesWithVideos() {
+    return this.http.get(`${this.fullRoute()}/animesWithVideos`);
+  }
+
+  getByQualificationType(data: object) {
+    return this.http.post(`${this.fullRoute()}/getByQualificationType`, data);
+  }
 }

@@ -87,4 +87,16 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigate(['/login']);
   }
+
+  goToHome() {
+    this.router.navigate(['/page/home']);
+  }
+
+  goToPendients() {
+    this.router.navigate(['/page/pendients']);
+  }
+
+  goToWatch() {
+    this.router.navigate(['/page/watchlist']);
+  }
 }

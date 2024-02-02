@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
+import { Component, ViewChild } from '@angular/core';
+import { HeaderComponent } from '../../utils/shared/header/header.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ReviewComponent } from './review/review.component';
+import { ReviewComponent } from '../../utils/shared/review/review.component';
 
 @Component({
-  selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.css'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
-export class PageComponent implements OnInit {
+export class HomeComponent {
   @ViewChild(HeaderComponent) header: HeaderComponent | undefined;
   review: boolean = false;
 

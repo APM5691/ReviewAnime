@@ -1,0 +1,25 @@
+<div class="d-flex flex-column limit">
+  <mat-list class="text-white">
+    <div mat-subheader>Chat</div>
+    <mat-list-item *ngFor="let object of messages | async">
+      <mat-icon matListItemIcon>person</mat-icon>
+      <div matListItemTitle>{{ object.user.name }}</div>
+      <div matListItemLine>{{ object.message }}</div>
+    </mat-list-item>
+  </mat-list>
+
+  <div class="w-100">
+    <form [formGroup]="formMessage" (ngSubmit)="sendMessage()">
+      <mat-form-field class="p-2 w-100">
+        <input
+          matInput
+          placeholder="Type message..."
+          formControlName="message"
+        />
+      </mat-form-field>
+      <div class="w-100 p-2">
+        <button mat-raised-button type="submit" class="w-100">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -9,7 +9,7 @@
       <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef>Imagen</th>
         <td mat-cell *matCellDef="let element">
-          <img height="100px" [src]="element.image" />
+          <img height="100px" [src]="element.image" loading="lazy" />
         </td>
       </ng-container>
 

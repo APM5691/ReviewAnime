@@ -5,12 +5,12 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
     path: 'login',
-    loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginModule),
+    loadChildren: async () =>
+      (await import('./login/login.module')).LoginModule,
   },
   {
     path: 'page',
-    loadChildren: () => import('./page/page.module').then((m) => m.PageModule),
+    loadChildren: async () => (await import('./page/page.module')).PageModule,
   },
 ];
 

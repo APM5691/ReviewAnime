@@ -3,8 +3,7 @@
 </div>
 
 <div *ngIf="!loading">
-  <video controls class="video-player">
-    <source [src]="actualVideo.url" type="video/mp4" />
+  <video controls class="video-player" [src]="actualVideo.url" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
   <div class="video-select">

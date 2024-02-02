@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div *ngIf="!loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-container *ngIf="loading">
+  <div class="d-flex justify-content-center p-2">
+    <button
+      mat-stroked-button
+      *ngFor="let anime of animesToSelect"
+      (click)="onAnimeSelect(anime.id)"
+    >
+      {{ anime.name }}
+    </button>
+  </div>
+</ng-container>
+
+<div *ngIf="animeSelected">
+  <div class="d-flex col-md-12">
+    <div class="col-md-2">
+      <app-users></app-users>
+    </div>
+
+    <div class="col-md-10">
+      <video
+        controls
+        class="p-2"
+        width="98%"
+        [src]="actualVideo.url"
+        type="video/mp4"
+      >
+        Your browser does not support HTML5 video.
+      </video>
+      <mat-select
+        style="width: 98%"
+        [(value)]="actualVideo"
+        (selectionChange)="onVideoChange($event.value.id)"
+      >
+        <mat-option *ngFor="let video of videos" [value]="video">
+          {{ video.numberOfEpisode }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <app-chat #chat (sendM)="sendMessage($event)"></app-chat>
+  </div>
+</div>
