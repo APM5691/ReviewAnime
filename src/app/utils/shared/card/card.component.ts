@@ -16,8 +16,6 @@ export class CardComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    console.log('Anime: ', this.anime);
-
     if (this.anime.qualification) {
       this.qualification = this.anime.qualification[0].qualification;
     }

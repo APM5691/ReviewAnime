@@ -13,7 +13,9 @@ export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+let url = isDevMode() ? 'http://localhost:3000' : 'http://52.91.50.132/';
+
+const config: SocketIoConfig = { url, options: {} };
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,7 +27,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:3000', 'http://52.91.50.132/'],
+        allowedDomains: [url],
       },
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
