@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthGuard } from './utils/guards/auth.guard';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -27,7 +26,7 @@ const config: SocketIoConfig = { url, options: {} };
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: [url],
+        allowedDomains: ['localhost:3000', 'http://52.91.50.132/'],
       },
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -37,7 +36,6 @@ const config: SocketIoConfig = { url, options: {} };
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
