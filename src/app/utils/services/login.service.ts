@@ -17,8 +17,12 @@ export class LoginService extends Repository<Login> {
   login(body: Object) {
     return this.http.post(this.fullRoute(), body).pipe(
       tap((response: any) => {
+        console.log(response);
+
         const token = response['token'];
         this.setToken(token);
+
+        console.log(this.getUser());
       })
     );
   }

@@ -1,0 +1,28 @@
+<app-review *ngIf="review" (review)="openDialog()"></app-review>
+
+<div>
+  <app-header (OpenDialog)="openDialog()"></app-header>
+
+  <div class="col-md-12 d-flex">
+    <div class="w-100 m-2">
+      <h2>Buscar Anime</h2>
+      <app-search></app-search>
+    </div>
+  </div>
+
+  <div class="adapt m-2">
+    <h2>
+      Animes
+      <span class="line-through">Recientes</span>
+      Aleatorios
+    </h2>
+    <app-recent-animes></app-recent-animes>
+  </div>
+
+  <div class="adapt m-2">
+    <h2>Animes Populares</h2>
+    <app-top-animes></app-top-animes>
+  </div>
+
+  <!-- Calendario de Animes Cuando Salen -->
+</div>

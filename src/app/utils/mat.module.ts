@@ -36,6 +36,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StartsComponent } from './shared/starts.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HeaderComponent } from './shared/header/header.component';
+import { CardComponent } from './shared/card/card.component';
+import { ReviewComponent } from './shared/review/review.component';
 
 const materialModules = [
   CdkTreeModule,
@@ -76,8 +79,19 @@ const materialModules = [
   MatDialogModule,
 ];
 @NgModule({
-  declarations: [StartsComponent],
+  declarations: [
+    StartsComponent,
+    HeaderComponent,
+    CardComponent,
+    ReviewComponent,
+  ],
   imports: [CommonModule, ...materialModules],
-  exports: [...materialModules, StartsComponent],
+  exports: [
+    ...materialModules,
+    StartsComponent,
+    HeaderComponent,
+    CardComponent,
+    ReviewComponent,
+  ],
 })
 export class AngularMaterialModule {}

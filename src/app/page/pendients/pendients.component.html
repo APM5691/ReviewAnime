@@ -1,0 +1,50 @@
+<app-review *ngIf="review" (review)="openDialog()"></app-review>
+
+<div>
+  <app-header #header (OpenDialog)="openDialog()"></app-header>
+
+  <div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <ng-container *ngIf="!loading">
+    <div class="d-flex flex-column justify-content-center">
+      <div class="d-flex justify-content-center">
+        <h2>Animes Actualmente Viendo</h2>
+      </div>
+      <div class="d-flex justify-content-center w-100 flex-wrap">
+        <app-card
+          *ngFor="let anime of animesWatching"
+          [anime]="anime"
+          (meClick)="recharge()"
+        ></app-card>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center">
+      <div class="d-flex justify-content-center">
+        <h2>Animes Pendientes</h2>
+      </div>
+      <div class="d-flex justify-content-center w-100 flex-wrap">
+        <app-card
+          *ngFor="let pendient of animesPending"
+          [anime]="pendient"
+          (meClick)="recharge()"
+        ></app-card>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center">
+      <div class="d-flex justify-content-center">
+        <h2>Animes Vistos</h2>
+      </div>
+      <div class="d-flex justify-content-center w-100 flex-wrap">
+        <app-card
+          *ngFor="let seen of animesSeen"
+          [anime]="seen"
+          (meClick)="recharge()"
+        ></app-card>
+      </div>
+    </div>
+  </ng-container>
+</div>

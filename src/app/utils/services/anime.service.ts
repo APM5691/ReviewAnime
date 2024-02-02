@@ -29,4 +29,19 @@ export class AnimeService extends Repository<Anime> {
   getSearch(search: Object) {
     return this.http.post(`${this.fullRoute()}/search`, { search });
   }
+
+  getQualificationAndAnimeByUser(data: object) {
+    return this.http.post(
+      `${this.fullRoute()}/getQualificationAndAnimeByUser`,
+      data
+    );
+  }
+
+  getAnimesWithVideos() {
+    return this.http.get(`${this.fullRoute()}/animesWithVideos`);
+  }
+
+  getByQualificationType(data: object) {
+    return this.http.post(`${this.fullRoute()}/getByQualificationType`, data);
+  }
 }

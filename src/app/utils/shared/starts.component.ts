@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-starts',
   template: `
-    <div class="d-flex change">
+    <div class="d-flex" [class.change]="column">
       <ng-container *ngFor="let i of arrayWithStarts">
         <mat-icon *ngIf="i == 'full'">star</mat-icon>
         <mat-icon *ngIf="i == 'half'">star_half</mat-icon>
@@ -23,6 +23,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StartsComponent implements OnInit {
   @Input() qualification: number = 0;
+  @Input() column: boolean = true;
   start: number = 1;
   end: number = 5;
   arrayWithStarts: any[] = [];

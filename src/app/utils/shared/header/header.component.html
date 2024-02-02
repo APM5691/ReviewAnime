@@ -1,0 +1,74 @@
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="justify-content-around">
+      <span>Califica El Anime</span>
+
+      <!-- <span class="w-50 m-2 d-flex flex-column align-items-center hideInLow">
+        <div (mouseover)="showHiddenText()" (mouseleave)="hideHiddenText()">
+          <p class="show" *ngIf="showFirstText">
+            Animes Calificados: {{ percentage }}%
+          </p>
+          <p class="hide" *ngIf="!showFirstText && showSecondText">
+            Animes Calificados: {{ animesReviewed }}/{{ numberOfAnimes }}
+          </p>
+        </div>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="percentage"
+          color="warn"
+        ></mat-progress-bar>
+      </span>
+
+      <span class="w-50 m-2 d-flex flex-column align-items-center hideInLow">
+        <div (mouseover)="showHiddenText()" (mouseleave)="hideHiddenText()">
+          <p class="show" *ngIf="showFirstText">
+            Animes Vistos: {{ percentajeWatched }}%
+          </p>
+          <p class="hide" *ngIf="!showFirstText && showSecondText">
+            Animes Vistos: {{ animesWatched }}/{{ numberOfAnimes }}
+          </p>
+        </div>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="percentajeWatched"
+          color="warn"
+        ></mat-progress-bar>
+      </span> -->
+
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle
+          mat-raised-button
+          (click)="goToHome()"
+          color="primary"
+          class="hideInLow"
+        >
+          Inicio
+        </mat-button-toggle>
+
+        <mat-button-toggle
+          mat-raised-button
+          (click)="goToPendients()"
+          color="primary"
+        >
+          Tus animes
+        </mat-button-toggle>
+
+        <mat-button-toggle
+          mat-raised-button
+          (click)="goToWatch()"
+          color="primary"
+        >
+          Ver Animes Juntos
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <button mat-raised-button (click)="closeSession()" color="primary">
+        Cerrar Sesion
+      </button>
+
+      <button mat-icon-button (click)="openDialog()">
+        <mat-icon>play_circle_outline</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>

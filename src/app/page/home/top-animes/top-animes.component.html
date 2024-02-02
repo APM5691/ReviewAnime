@@ -1,0 +1,51 @@
+<table mat-table [dataSource]="animes" class="w-100">
+  <ng-container matColumnDef="img">
+    <th mat-header-cell *matHeaderCellDef>Imagen</th>
+    <td mat-cell *matCellDef="let element">
+      <img [src]="element.image" alt="img" width="100px" loading="lazy" />
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Titulo</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef class="hideOnMobile">Puntuacion</th>
+    <td mat-cell *matCellDef="let element" class="hideOnMobile">
+      <div class="d-flex align-items-center">
+        {{ element.qualification[0].qualification }}
+        <app-starts
+          [qualification]="element.qualification[0].qualification"
+        ></app-starts>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" stickyEnd>
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [matMenuTriggerFor]="meMenu" type="button">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #meMenu="matMenu">
+        <button
+          mat-menu-item
+          *ngIf="element.id == 4236"
+          (click)="watch(element.id)"
+        >
+          <mat-icon>visibility</mat-icon>
+          <span>Ver</span>
+        </button>
+        <button mat-menu-item (click)="edit(element.id)">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
