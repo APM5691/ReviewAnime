@@ -30,11 +30,6 @@ export class WatchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getAnimesWithVideos();
-    this.websocketsService.leaveRoom();
-    this.websocketsService.setUserForUsers();
-    this.websocketsService.initUsers();
-    this.websocketsService.joinRoom('default');
-    this.websocketsService.initChat();
   }
 
   ngOnDestroy() {
@@ -52,6 +47,12 @@ export class WatchComponent implements OnInit, OnDestroy {
   onAnimeSelect(animeId: number) {
     this.idAnime = animeId;
     this.getVideos();
+
+    this.websocketsService.leaveRoom();
+    this.websocketsService.setUserForUsers();
+    this.websocketsService.initUsers();
+    this.websocketsService.joinRoom(animeId.toString());
+    this.websocketsService.initChat();
   }
 
   getVideos() {
